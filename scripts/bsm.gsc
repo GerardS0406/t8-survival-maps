@@ -97,7 +97,7 @@ __init__()
 
     thread disableGobbles();
 
-    thread originalPointSystem();
+    //thread originalPointSystem();
 }
 
 box_weapons()

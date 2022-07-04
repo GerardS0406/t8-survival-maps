@@ -34,36 +34,7 @@ arena_main()
 
     thread spawn_shield((0,18,100),(0,90,0),#"hash_243cd42eb1bd6e10");
 
-    //thread spawnWunderfizz();
-
     thread arena_pap();
-}
-
-spawnWunderfizz()
-{
-    trigger = Spawn("trigger_radius_use",  (0,0,80), 0, 100, 100);
-    trigger.script_noteworthy = "wunderfizz";
-    trigger triggerignoreteam();
-    trigger sethintstring("Gimme Perk");
-    trigger setcursorhint("HINT_NOICON");
-    for(;;)
-    {
-        s_result = undefined;
-		s_result = trigger waittill(#"trigger");
-        e_player = s_result.activator;
-        e_player zm_perks::function_cc24f525();
-        e_player.var_1eba264f = undefined;
-        for(i = 0; i < 7; i++)
-		{
-			var_16c042b8 = e_player zm_perks::function_b2cba45a();
-			if(isdefined(var_16c042b8))
-			{
-				e_player.var_1eba264f = 1;
-				continue;
-			}
-			break;
-		}
-    }
 }
 
 arena_pap()
