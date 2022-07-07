@@ -17,6 +17,8 @@ arena_main()
         i++;
     }
 
+    thread scorp_in_box();
+
     foreach(challenge in getentarray("t_zm_towers_cleat_damage_trig", "script_noteworthy"))
     {
         challenge.origin = (0,0,-10000);
@@ -35,6 +37,19 @@ arena_main()
     thread spawn_shield((0,18,100),(0,90,0),#"hash_243cd42eb1bd6e10");
 
     thread arena_pap();
+}
+
+scorp_in_box()
+{
+    level flag::wait_till("all_players_spawned");
+    level flag::wait_till("initial_blackscreen_passed");
+    foreach(weapon in level.zombie_weapons)
+    {
+        if(weapon.weapon.name == #"hash_5aa162d2872d2bac")
+        {
+            weapon.is_in_box = 1;
+        }
+    }
 }
 
 arena_pap()

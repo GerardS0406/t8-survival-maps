@@ -7,6 +7,8 @@ library_main()
 
     thread library_Chests();
 
+    thread folly_in_box();
+
     struct::get_array("perk_vapor_altar")[0] movePerk((-1634,69,-8), (0,-135,0), 1);
     struct::get_array("perk_vapor_altar")[1] movePerk((-1822,442,-216), (0,0,0), 1);
     struct::get_array("perk_vapor_altar")[2] movePerk((-1798,-190,-216), (0,45,0), 1);
@@ -42,6 +44,19 @@ library_Chests()
     level flag::wait_till("all_players_spawned");
     level.start_chest_name = "library_zone_chest";
     level._zombiemode_custom_box_move_logic = &library_box_logic;
+}
+
+folly_in_box()
+{
+    level flag::wait_till("all_players_spawned");
+    level flag::wait_till("initial_blackscreen_passed");
+    foreach(weapon in level.zombie_weapons)
+    {
+        if(weapon.weapon.name == #"hash_138efe2bb30be63c" || weapon.weapon.name == #"hash_138f012bb30beb55" || weapon.weapon.name == #"hash_138f002bb30be9a2")
+        {
+            weapon.is_in_box = 1;
+        }
+    }
 }
 
 library_box_logic()

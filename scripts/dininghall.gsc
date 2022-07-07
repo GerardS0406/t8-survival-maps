@@ -6,6 +6,8 @@ dininghall_main()
 
     thread dining_Chests();
 
+    thread krakens_in_box();
+
     struct::get_array("perk_vapor_altar")[0] movePerk((575,-1375,1056), (0,90,0), 1);
     struct::get_array("perk_vapor_altar")[2] movePerk((-600,-15,1056), (0,0,0), 1);
     struct::get_array("perk_vapor_altar")[3] movePerk((-190,-1385,1056), (0,90,0), 1);
@@ -38,6 +40,19 @@ dining_Chests()
     level flag::wait_till("all_players_spawned");
     level.start_chest_name = "dining_hall_chest";
     level._zombiemode_custom_box_move_logic = &dining_box_logic;
+}
+
+krakens_in_box()
+{
+    level flag::wait_till("all_players_spawned");
+    level flag::wait_till("initial_blackscreen_passed");
+    foreach(weapon in level.zombie_weapons)
+    {
+        if(weapon.weapon.name == #"hash_7d7f0dbb00201240" || weapon.weapon.name == #"hash_95dd69e40d99560" || weapon.weapon.name == #"hash_539f784146391d2" || weapon.weapon.name == #"hash_5004e2171c2be97d")
+        {
+            weapon.is_in_box = 1;
+        }
+    }
 }
 
 dining_box_logic()

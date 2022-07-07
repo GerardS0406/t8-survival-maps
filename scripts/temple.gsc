@@ -4,6 +4,8 @@ temple_main()
 
     thread temple_Chests();
 
+    thread gauntlets_in_box();
+
     struct::get_array("perk_vapor_altar")[0] movePerk((-3051,-906,0), (0,135,0), 1);
     struct::get_array("perk_vapor_altar")[1] movePerk((-2620,-1420,-50), (0,125,0), 0);
     struct::get_array("perk_vapor_altar")[2] movePerk((-423,-1004,56), (0,50,0), 1);
@@ -66,6 +68,19 @@ temple_Chests()
     level flag::wait_till("all_players_spawned");
     level.start_chest_name = "temple_terrace_chest";
     level._zombiemode_custom_box_move_logic = &temple_box_logic;
+}
+
+gauntlets_in_box()
+{
+    level flag::wait_till("all_players_spawned");
+    level flag::wait_till("initial_blackscreen_passed");
+    foreach(weapon in level.zombie_weapons)
+    {
+        if(weapon.weapon.name == #"hash_67c8d6a04ecce713" || weapon.weapon.name == #"hash_67c8dea04eccf4ab" || weapon.weapon.name == #"hash_67c8dba04eccef92" || weapon.weapon.name == #"hash_67c8e2a04eccfb77")
+        {
+            weapon.is_in_box = 1;
+        }
+    }
 }
 
 temple_box_logic()

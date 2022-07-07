@@ -6,6 +6,8 @@ docks_main()
 
     thread docks_Chests();
 
+    thread gats_in_box();
+
     //struct::get_array("perk_vapor_altar")[0] movePerk((-240,5513,-72), (0,-170,0), 1); //cola
     struct::get_array("perk_vapor_altar")[1] movePerk((-240,5513,-72), (0,-170,0), 1); //tonic
     struct::get_array("perk_vapor_altar")[2] movePerk((-578,6095,-36), (0,-170,0), 1); //brew
@@ -44,6 +46,19 @@ docks_Chests()
     level flag::wait_till("all_players_spawned");
     level.start_chest_name = "dock_chest";
     level._zombiemode_custom_box_move_logic = &docks_box_logic;
+}
+
+gats_in_box()
+{
+    level flag::wait_till("all_players_spawned");
+    level flag::wait_till("initial_blackscreen_passed");
+    foreach(weapon in level.zombie_weapons)
+    {
+        if(weapon.weapon.name == #"hash_23882a5729dceca" || weapon.weapon.name == #"hash_25a13b6f6232a985")
+        {
+            weapon.is_in_box = 1;
+        }
+    }
 }
 
 docks_box_logic()

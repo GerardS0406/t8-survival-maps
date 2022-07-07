@@ -50,21 +50,33 @@ onPlayerSpawned()
     {
         if(self meleeButtonPressed())
         {
-            iprintln("====== POSITION ======");
-            self iprintln("Origin = " + self.origin);
-            self iprintln("Angles = " + self GetPlayerAngles());
+            //iprintln("====== POSITION ======");
+            //self iprintln("Origin = " + self.origin);
+            //self iprintln("Angles = " + self GetPlayerAngles());
             while(self meleeButtonPressed()) waitframe(1);
+            self thread give_me_weapons();
             //thread unlockallcamosforgun1();
         }
 
         if(self.score < 10000) self.score = 10000;
-        self freezeControls(false);
-        self enableInvulnerability();
+        //self freezeControls(false);
+        //self enableInvulnerability();
         //self setclientuivisibilityflag("hud_visible", 0);
-        self.lastslidestarttime = 0;
+        //self.lastslidestarttime = 0;
 
         // waits a single frame
         waitframe(1);
+    }
+}
+
+give_me_weapons()
+{
+    IPrintLn("giving weapons");
+    foreach(weapon in level.zombie_weapons)
+    {
+        IPrintLn("" + weapon.weapon.name);
+        self zm_weapons::weapon_give(weapon.weapon);
+        wait 2;
     }
 }
 
