@@ -28,3 +28,19 @@ Map List:
 - Temple (Ancient Evil)
 - Nuketown (Alpha Omega)
 - Beach (Tag Der Toten)
+
+Inject Tutorial:
+
+Video Tutorial: https://www.youtube.com/watch?v=QcVKtRuW-jQ
+
+Text Tutorial:
+1) Extract Zip file wherever you want.
+2) Open Black Ops 4 and go to the Zombies Main Menu
+3) Once in Zombies Main Menu, Go to T8 BSM Mod/Injector and open DebugCompiler.exe
+4) Press I to choose Injection
+5) Drag LegacyBSMbyGerard.gscc or VanillaBSMbyGerard.gscc (Difference in files is listed in features) into the injector and press Enter.
+6) Load up any map and enjoy the mod! (Future versions every map will have their own GSC file)
+
+Credits:
+GerardS0406 - Mod
+Serious - Injector
