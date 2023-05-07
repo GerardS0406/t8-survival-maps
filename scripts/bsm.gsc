@@ -43,7 +43,7 @@ __init__()
 
 
     callback::on_start_gametype(&init);
-    callback::on_connect(&onPlayerConnect);
+    //callback::on_connect(&onPlayerConnect);
     //callback::on_spawned(&onPlayerSpawned);
 
     if(tolower(getdvarstring(#"hash_3b7b241b78207c96")) == "zm_towers")
@@ -97,7 +97,7 @@ __init__()
 
     thread disableGobbles();
 
-    thread originalPointSystem();
+    //thread originalPointSystem();
 }
 
 box_weapons()

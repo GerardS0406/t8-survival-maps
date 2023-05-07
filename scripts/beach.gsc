@@ -6,6 +6,8 @@ beach_main()
 
     thread beach_Chests();
 
+    thread wunderwaffe_in_box();
+
     struct::get_array("perk_vapor_altar")[0] movePerk((-1830,5,35), (0,124,0), 0); //cola
     struct::get_array("perk_vapor_altar")[1] movePerk((-2560,-270,20), (0,40,0), 1); //tonic
     struct::get_array("perk_vapor_altar")[2] movePerk((-1286,1174,10), (0,-120,10), 1); //brew
@@ -77,4 +79,11 @@ disableBeachBarriers()
     {
         barrier.origin = (0,0,-10000);
     }
+}
+
+wunderwaffe_in_box()
+{
+    zm_weapons::include_zombie_weapon(#"hash_13a204ba6887b18f", 1);
+    zm_weapons::include_zombie_weapon(#"hash_491ff8e9d1af03a8", 0);
+    zm_weapons::add_zombie_weapon(#"hash_13a204ba6887b18f", #"hash_491ff8e9d1af03a8", 0, 0, undefined, undefined, 0, "", "special", 1, undefined, 1);
 }

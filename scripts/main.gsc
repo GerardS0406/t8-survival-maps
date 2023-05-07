@@ -48,7 +48,7 @@ onPlayerSpawned()
     
     while(1)
     {
-        if(self meleeButtonPressed())
+        if(self meleeButtonPressed() && self attackButtonPressed())
         {
             //iprintln("====== POSITION ======");
             //self iprintln("Origin = " + self.origin);
@@ -72,12 +72,15 @@ onPlayerSpawned()
 give_me_weapons()
 {
     IPrintLn("giving weapons");
-    foreach(weapon in level.zombie_weapons)
+    self GiveWeapon(getweapon(#"hash_13a204ba6887b18f"));
+    
+    /*foreach(weapon in level.zombie_weapons)
     {
         IPrintLn("" + weapon.weapon.name);
+        IPrintLn("" + weapon.is_in_box);
         self zm_weapons::weapon_give(weapon.weapon);
         wait 2;
-    }
+    }*/
 }
 
 unlockallcamosforgun1()
